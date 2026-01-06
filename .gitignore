@@ -1,0 +1,13 @@
+# Ignorar arquivos de segredo e configuração local
+.streamlit/secrets.toml
+
+# Ignorar arquivos temporários do Python
+__pycache__/
+*.pyc
+
+# Ignorar ambientes virtuais (se tiver)
+venv/
+.env
+
+# Ignorar arquivos temporários do Word (se estiver aberto)
+~$*.docx
