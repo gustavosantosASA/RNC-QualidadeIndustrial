@@ -313,8 +313,7 @@ def main():
                 contexto_docx = {
                     "data_nc": data_nc.strftime("%d/%m/%Y"),
                     "emitente": emitente, "turno": turno, "area_id": area_id,
-                    "n_pecas_nc": n_pecas_nc, "metragem_ger_nc": metragem_ger_nc, "peso_total_nc": peso_total_nc,
-                    "nao_conf": nao_conf, "n_nc": n_nc, "cc_origem": cc_origem, "setor_origem": setor_origem, "causa": causa,
+                    "nao_conf": nao_conf, "cc_origem": cc_origem, "setor_origem": setor_origem, "causa": causa,
                     "desc_item": desc_item, "cod_item": cod_item, "qtd_pecas": qtd_pecas, "metragem": metragem, "peso": peso,
                     "fornecedor": fornecedor, "cor_tinta": cor_tinta, "cliente": cliente, "pedido": pedido, "op": op,
                     "acao": acao, "obs": obs,
@@ -324,13 +323,13 @@ def main():
                 buffer_doc = gerar_laudo_docx(contexto_docx, imagem_final)
                 
                 if buffer_doc:
-                    nome_arquivo = f"RNC_{n_nc}_{datetime.now().strftime('%Y%m%d_%H%M')}.docx"
+                    nome_arquivo = f"RNC - {datetime.now().strftime('%Y%m%d')} - {cc_origem} - {nao_conf}.docx"
                     
                     link_drive = upload_para_drive(buffer_doc, nome_arquivo)
                     
                     linha_dados = [
                         data_nc, emitente, turno, area_id,
-                        n_pecas_nc, metragem_ger_nc, peso_total_nc, nao_conf, n_nc, cc_origem, setor_origem, causa,
+                        nao_conf, cc_origem, setor_origem, causa,
                         desc_item, cod_item, qtd_pecas, metragem, peso,
                         fornecedor, cor_tinta, cliente, pedido, op,
                         acao, obs,
